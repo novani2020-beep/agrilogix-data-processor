@@ -1,0 +1,4 @@
+batch_id,commodity,weight_kg,harvest_date,destination_hub,unit_price_ngn
+BCH-101,Tomatoes,450,2026-11-08,Uyo Central,850
+BCH-102,Cassava Tubers,1200,2026-11-05,Aba Market,320
+BCH-103,Plantain,600,invalid-date,Ikot Ekpene,500
