@@ -1,0 +1,27 @@
+# AgriLogix Data Processor
+
+A modular Python CLI and data-processing pipeline designed to parse, validate, and standardize agricultural supply-chain manifests, waybills, and commodity inventory records.
+
+## Problem Statement
+Smallholder aggregators and regional foodstuff distributors frequently manage trade manifests and inventory logs using inconsistent spreadsheets and manual documents. Formatting errors, missing harvest dates, and unflagged shelf-life risks lead to costly post-harvest spoilage and invoicing discrepancies.
+
+**AgriLogix Data Processor** automates the ingestion of raw commodity records, enforces strict data-validation rules, flags high-spoilage-risk shipments based on crop shelf-life thresholds, and exports clean, standardized reports.
+
+---
+
+## Features
+- **Automated CSV & Text Ingestion:** Parses raw shipment manifests and normalizes inconsistent whitespace, date formats, and currency/weight units.
+- **Domain-Driven Validation:** Validates required fields (batch ID, crop type, quantity, harvest date, destination) and isolates malformed records into an error log rather than crashing the pipeline.
+- **Spoilage Risk Scoring:** Evaluates elapsed post-harvest days against commodity-specific shelf-life thresholds to flag urgent shipments (`LOW`, `MEDIUM`, `HIGH` risk).
+- **Structured Report Generation:** Outputs clean JSON/CSV summaries ready for downstream invoicing or logistics routing.
+
+---
+
+## Project Architecture
+
+```text
+src/
+├── main.py       # CLI entry point orchestrating the ETL pipeline
+├── parser.py     # Reads raw input files and normalizes field types
+├── validator.py  # Enforces schema rules and computes spoilage risk scores
+└── exporter.py   # Writes validated records and audit logs to disk
